@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br>
+                    Continue shopping <a href="{{ url('/test') }}">here!</a>
                 </div>
             </div>
         </div>
