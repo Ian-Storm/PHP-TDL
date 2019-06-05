@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test' , function() {
-	return view('test');
+Route::get('/list' , function() {
+	return view('list');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
