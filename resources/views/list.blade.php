@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">list</div>
+                <div class="card-header">Lists</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-
+                    @foreach($lists as $list)
+                    	{{$list->name}}
+                    @endforeach
                 </div>
             </div>
         </div>

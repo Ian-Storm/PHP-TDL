@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ListTable extends Migration
+class CreateListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class ListTable extends Migration
     public function up()
     {
         Schema::create('list', function (Blueprint $table) {
-            $table->bigIncrements('id')->autoIncrement();
+            $table->increments('id');
             $table->string('name');
+            $table->integer('user_id');
         });
     }
     /**
@@ -25,6 +26,6 @@ class ListTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('list');
     }
 }

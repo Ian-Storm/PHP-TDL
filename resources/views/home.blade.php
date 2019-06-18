@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <p>To go to the list click <a href="{{ url('/list') }}">here</a>!</p>
                 </div>
             </div>
         </div>
