@@ -15,7 +15,7 @@
                     @endif
 
                     @foreach($lists as $list)
-                    	{{$list->name}}
+                    	{{$list->name}}<br>
                     @endforeach
                 </div>
             </div>
