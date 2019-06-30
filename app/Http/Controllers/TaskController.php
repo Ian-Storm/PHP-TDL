@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\ToDoList;
-use Auth;
+use App\Http\Models\Task;
 
-class ToDoListController extends Controller
+class TaskController extends Controller
 {
-	public function __construct()
-	{
-	    $this->middleware('auth');
-	}
-
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $lists = ToDoList::where('user_id', Auth::user()->id)->get();//all ToDoLists of logged user
-        return view('list.index', compact('lists'));
+        $id = isset($_GET['list_id']) ? $_GET['list_id'] : 0;
+        $tasks = Task::where('list_id', $id)->get();
+        return view('task.index', compact('tasks'));
     }
 
     /**
@@ -31,18 +26,29 @@ class ToDoListController extends Controller
      */
     public function create()
     {
-        return view('list.create');
+        //
     }
 
     /**
-     * Store a newly created resource in storage.(This is the create save)
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -57,7 +63,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.(This is the edit save)
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

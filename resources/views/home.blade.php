@@ -16,7 +16,7 @@
 
                     You are logged in!
                     <br>
-                    <p>To go to the list click <a href="{{ url('/list') }}">here</a>!</p>
+                    <p>To go to the list, click <a href="{{ route('list.index') }}">here</a>!</p>
                 </div>
             </div>
         </div>

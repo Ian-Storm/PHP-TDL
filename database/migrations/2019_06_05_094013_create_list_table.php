@@ -19,6 +19,7 @@ class CreateListTable extends Migration
             $table->integer('user_id');
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -28,4 +29,6 @@ class CreateListTable extends Migration
     {
         Schema::dropIfExists('list');
     }
+
+
 }

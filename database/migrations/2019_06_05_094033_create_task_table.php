@@ -18,8 +18,12 @@ class CreateTaskTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('duration');
-            $table->enum('status', ['Done', 'Not Done']);// alleen "Done" of "Not Done" mag ingevuld worden 
-            $table->unsignedBigInteger('list_id');
+            $table->enum('status', ['Done', 'Not Done']);//Alleen "Done" of "Not Done" mag ingevuld worden. 
+            $table->integer('list_id')->unsigned();
+        });
+
+        Schema::table('task', function ($table){
+            $table->foreign('list_id')->references('id')->on('list')->onDelete('cascade');
         });
     }
 

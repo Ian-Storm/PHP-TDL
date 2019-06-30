@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lists</div>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4 h3">Lists</div>
+                        <a href="{{ route('list.create') }}" class="btn btn-primary col-md-4 offset-md-4">Create list</a>
+                    </div>
+                </div>
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +21,7 @@
                     @endif
 
                     @foreach($lists as $list)
-                    	{{$list->name}}<br>
+                    	<a href="{{ route('task.index', ['list_id'=>$list->id]) }}">{{$list->name}}</a><br>
                     @endforeach
                 </div>
             </div>

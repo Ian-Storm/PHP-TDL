@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/list', 'ToDoListController@index')->name('list.index');
+Route::resource('/list', 'ToDoListController')->except('show');
+
+Route::resource('/task', 'TaskController');
