@@ -21,7 +21,19 @@
                     @endif
 
                     @foreach($lists as $list)
-                    	<a href="{{ route('task.index', ['list_id'=>$list->id]) }}">{{$list->name}}</a><br>
+                    <div class="row">
+                    	<a class="col-md-4" href="{{ route('task.index', ['list_id'=>$list->id]) }}">{{$list->name}}</a>
+
+                        <a href="{{ route('list.edit', $list->id) }}" class="btn btn-secondary offset-md-5 btn-sm">Edit list</a>
+
+                        <div class="col-md-2">
+                            <form method="post" action="{{ route('list.destroy', $list->id) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger btn-sm" type="submit">Remove list</button>
+                            </form>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

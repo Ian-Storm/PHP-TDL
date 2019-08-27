@@ -20,6 +20,7 @@ class CreateTaskTable extends Migration
             $table->string('duration');
             $table->enum('status', ['Done', 'Not Done']);//Alleen "Done" of "Not Done" mag ingevuld worden. 
             $table->integer('list_id')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('task', function ($table){

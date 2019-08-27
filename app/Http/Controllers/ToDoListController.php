@@ -42,7 +42,10 @@ class ToDoListController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = ['list_name' => $request->listname, 'user_id' => Auth::user()->id];
+        $list = new ToDoList;
+        $list->saveList($data); 
+        return redirect()->route('list.index');
     }
 
     /**
@@ -53,7 +56,8 @@ class ToDoListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list = ToDoList::findOrFail($id);
+        return view('list.edit', compact('list'));
     }
 
     /**
@@ -76,6 +80,9 @@ class ToDoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $list = ToDoList::findOrFail($id);
+        $list->delete();
+
+        return redirect()->route('list.index');
     }
 }
