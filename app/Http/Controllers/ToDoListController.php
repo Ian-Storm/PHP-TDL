@@ -45,7 +45,7 @@ class ToDoListController extends Controller
         $data = ['list_name' => $request->listname, 'user_id' => Auth::user()->id];
         $list = new ToDoList;
         $list->saveList($data); 
-        return redirect()->route('list.index');
+        return redirect()->route('list.index')->with('success', "Success! List  '".$request->listname."' created.");
     }
 
     /**
@@ -69,7 +69,10 @@ class ToDoListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $list = ToDoList::findOrFail($id);
+        $list->name = $request->listname;
+        $list->save();
+        return redirect()->route('list.index')->with('success', "Success! List  '".$request->listname."' updated.");
     }
 
     /**
@@ -82,7 +85,6 @@ class ToDoListController extends Controller
     {
         $list = ToDoList::findOrFail($id);
         $list->delete();
-
-        return redirect()->route('list.index');
+        return redirect()->route('list.index')->with('success', 'Success! List deleted.');
     }
 }

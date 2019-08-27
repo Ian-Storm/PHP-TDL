@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <!-- action="" is waar de <form> naartoe wordt gestuurd, zodra je op <button type="submit"> of op <input type="submit"> klikt -->
-                    <form action="{{ route('list.index') }}" method="post">
+                    <form action="{{ route('list.update', ['list_id'=>$list->id]) }}" method="post">
                         @method('PUT')
                         @csrf
                         <label>List name: </label>

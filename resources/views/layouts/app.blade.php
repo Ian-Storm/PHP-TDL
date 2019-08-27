@@ -73,6 +73,40 @@
         </nav>
 
         <main class="py-4">
+        @if (Session::has('message') || Session::has('success') || $errors->any() || Session::has('error'))
+                    @if (Session::has('message'))
+                    <div class="alert alert-info h5 text-center alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('message') }}
+                    </div>
+                    @endif
+                    @if (Session::has('success'))
+                    <div class="alert alert-success h5 text-center alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if (Session::has('error'))
+                    <div class="alert alert-danger h5 text-center alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('error') }}
+                    </div>
+                    @endif
+                    @foreach ($errors->all() as $message)
+                    <div class="alert alert-danger h5 text-center alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ $message }}
+                    </div>
+                    @endforeach
+                @endif
             @yield('content')
         </main>
     </div>
