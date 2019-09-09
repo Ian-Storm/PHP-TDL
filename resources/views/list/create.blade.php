@@ -12,7 +12,7 @@
                     <form action="{{ route('list.store') }}" method="post">
                         @csrf
                         <label>List name: </label>
-                        <input required type='text' name='listname' placeholder='Listname here please.'>
+                        <input required type='text' name='listname' placeholder='List name here please.'>
                         <input type="submit" value="Submit">
                     </form>
                 </div>

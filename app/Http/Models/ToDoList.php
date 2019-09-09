@@ -9,6 +9,10 @@ class ToDoList extends Model
 	protected $fillable = ['name', 'user_id'];
     protected $table = 'list';
 
+    public function tasks() {
+    	return $this->hasMany('App\Http\Models\Task');
+    }
+
     public function saveList($data) {
     	return $this->create([
     		'name' => $data['list_name'],

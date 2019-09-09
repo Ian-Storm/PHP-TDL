@@ -26,7 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ['task_name' => $request->taskname, 'task_description' => $request->taskdescription, 
+                'task_duration' => $request->taskduration, 'task_status' => $request->taskstatus, 
+                'list_id' => $request->listid];
+        $task = new Task;
+        $task->saveTask($data);
+        return redirect()->route('task.index');
     }
 
     /**
